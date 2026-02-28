@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public'))); //This line serves stat
 
 
 app.get('/', (req, res) => {
-    res.send('Hey! I am root!');
+    res.redirect('/listings');
 });
 
 app.get("/listings",async (req, res) =>{
@@ -115,6 +115,7 @@ app.get("/testListing", async (req, res) => {
     res.send("Succesfully saved the sample listing");
 });
 
-app.listen(8080, () => {
-    console.log('Server is running on port 8080');
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
 });
